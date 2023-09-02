@@ -1,5 +1,5 @@
 import './App.css'
-import { Route, Routes } from 'react-router-dom'
+import { Navigate, Route, Routes } from 'react-router-dom'
 import Header from './components/header'
 import ArticlesPage from './layouts/articlesPage'
 import DashboardPage from './layouts/dashboardPage'
@@ -13,11 +13,12 @@ function App() {
       <div className="container">
         <Header />
         <Routes>
-          <Route path="/articles?/:id?" element={<ArticlesPage />}></Route>
+          <Route path="/" element={<Navigate to="/articles" />} />
+          <Route path="/articles/:id?" element={<ArticlesPage />} />
           <Route path="/dashboard" element={<DashboardPage />} />
-          <Route path="/add" element={<AddPage />}></Route>
-          <Route path="/login" element={<LoginPage />}></Route>
-          <Route path="/signup" element={<SignUpPage />}></Route>
+          <Route path="/add" element={<AddPage />} />
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/signup" element={<SignUpPage />} />
         </Routes>
       </div>
     </div>
