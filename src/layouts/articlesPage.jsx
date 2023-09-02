@@ -1,7 +1,7 @@
 import Page from './page'
 import ArticlesList from '../components/articlesList'
 
-const Articles = () => {
+const ArticlesPage = () => {
   return (
     <Page title="Articles">
       <ArticlesList />
@@ -9,4 +9,4 @@ const Articles = () => {
   )
 }
 
-export default Articles
+export default ArticlesPage

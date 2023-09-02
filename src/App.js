@@ -1,6 +1,7 @@
 import './App.css'
 import Header from './components/header'
 import ArticlePage from './layouts/articlePage'
+import ArticlesPage from './layouts/articlesPage'
 
 const article = {
   id: 1,
@@ -15,6 +16,7 @@ function App() {
       <div className="container">
         <Header />
         <ArticlePage {...article} />
+        <ArticlesPage />
       </div>
     </div>
   )
