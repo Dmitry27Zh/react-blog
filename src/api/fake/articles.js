@@ -26,3 +26,12 @@ export const fetchAll = () => {
     }, 1000)
   })
 }
+
+export const getById = (id) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      const article = articles.find((article) => article.id === id)
+      resolve(article)
+    }, 1000)
+  })
+}

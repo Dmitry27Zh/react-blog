@@ -1,9 +1,10 @@
 import Card from './card'
 
 const ArticleCard = (props) => {
-  const { name, short } = props
+  const { id, name, short } = props
+
   const link = {
-    href: '/',
+    href: `/articles/${id}`,
     linkText: 'Open',
   }
 
