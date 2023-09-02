@@ -1,6 +1,6 @@
 import './App.css'
 import Header from './components/header'
-import Articles from './components/articles'
+import Articles from './layouts/articles'
 
 function App() {
   return (
