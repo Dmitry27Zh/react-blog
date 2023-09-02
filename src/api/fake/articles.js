@@ -19,8 +19,10 @@ const articles = [
   },
 ]
 
-export const fetchAll = new Promise((resolve) => {
-  setTimeout(() => {
-    resolve(articles)
-  }, 1000)
-})
+export const fetchAll = () => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(articles)
+    }, 1000)
+  })
+}
