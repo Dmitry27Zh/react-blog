@@ -21,6 +21,7 @@ const ArticlesList = () => {
       long: 'Long 3',
     },
   ]
+
   return (
     <div className="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
       {articles.map((article) => {
