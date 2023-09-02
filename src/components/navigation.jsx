@@ -1,22 +1,16 @@
-import { Link } from 'react-router-dom'
+import NavigationLink from './navigationLink'
 
 const Navigation = () => {
   return (
     <ul className="nav col-12 col-md-auto mb-2 justify-content-center mb-md-0">
       <li>
-        <Link to="/" className="nav-link px-2 link-secondary">
-          Articles
-        </Link>
+        <NavigationLink to="/">Articles</NavigationLink>
       </li>
       <li>
-        <Link to="/dashboard" className="nav-link px-2">
-          Dashboard
-        </Link>
+        <NavigationLink to="/dashboard">Dashboard</NavigationLink>
       </li>
       <li>
-        <Link to="/add" className="nav-link px-2">
-          Add
-        </Link>
+        <NavigationLink to="/add">Add</NavigationLink>
       </li>
     </ul>
   )
