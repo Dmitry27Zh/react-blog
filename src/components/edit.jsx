@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import TextInput from './textInput'
+import PropTypes from 'prop-types'
 
 const Edit = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
@@ -44,6 +45,12 @@ const Edit = (props) => {
       </button>
     </form>
   )
+}
+
+Edit.propTypes = {
+  name: PropTypes.string,
+  short: PropTypes.string,
+  long: PropTypes.string,
 }
 
 export default Edit
