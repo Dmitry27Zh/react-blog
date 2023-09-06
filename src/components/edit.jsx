@@ -8,9 +8,12 @@ const Edit = (props) => {
   const handleChange = ([name, value]) => {
     setData((previousState) => ({ ...previousState, [name]: value }))
   }
+  const handleSubmit = (event) => {
+    event.preventDefault()
+  }
 
   return (
-    <form>
+    <form onSubmit={handleSubmit}>
       <div className="row g-3">
         <div className="col-sm-6 me-5">
           <TextInput label="Name" name="name" value={name} onChange={handleChange} />
