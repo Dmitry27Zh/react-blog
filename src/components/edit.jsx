@@ -8,8 +8,9 @@ const Edit = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
   const [data, setData] = useState({ name: initialName, short: initialShort, long: initialLong })
   const [errors, setErrors] = useState({})
+  const hasChanges = Object.values(errors).some((value) => value !== '')
   useEffect(() => {
-    if (hasChanges()) {
+    if (hasChanges) {
       validate()
     }
   }, [data])
@@ -31,13 +32,12 @@ const Edit = (props) => {
       },
     },
   }
-  const hasChanges = () => Object.values(errors).some((value) => value !== '')
+  const isValid = (errors) => isObjEmpty(errors)
   const validate = () => {
     const errors = validator(validatorConfig, data)
     setErrors(errors)
-    const isValid = isObjEmpty(errors)
 
-    return isValid
+    return isValid(errors)
   }
 
   const getOneErrorMessage = (name) => getOneValue(errors[name])
