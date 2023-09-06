@@ -8,6 +8,11 @@ const Edit = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
   const [data, setData] = useState({ name: initialName, short: initialShort, long: initialLong })
   const [errors, setErrors] = useState({})
+  useEffect(() => {
+    if (hasChanges()) {
+      validate()
+    }
+  }, [data])
   const { name, short, long } = data
   const validatorConfig = {
     name: {
@@ -26,6 +31,7 @@ const Edit = (props) => {
       },
     },
   }
+  const hasChanges = () => Object.values(errors).some((value) => value !== '')
   const validate = () => {
     const errors = validator(validatorConfig, data)
     setErrors(errors)
