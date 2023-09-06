@@ -1,6 +1,8 @@
 import { useState } from 'react'
 import TextInput from './textInput'
 import PropTypes from 'prop-types'
+import { validator } from '../utils/validator'
+import { isObjEmpty } from '../utils/object'
 
 const Edit = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
@@ -14,55 +16,21 @@ const Edit = (props) => {
     },
   }
   const validate = (data) => {
-    let errors = {}
-    const getError = (type, value, config) => {
-      const error = {}
-      const { message } = config
-      let invalid = false
+    const errors = validator(validatorConfig, data)
+    const isValid = isObjEmpty(errors)
 
-      switch (type) {
-        case 'isRequired':
-          invalid = value.trim().length === 0
-
-          break
-        case 'isRequired2':
-          invalid = value.trim().length === 0
-
-          break
-        default:
-          break
-      }
-
-      if (invalid) {
-        error[type] = message
-      }
-
-      return error
-    }
-
-    for (const name in validatorConfig) {
-      const currentConfig = validatorConfig[name]
-      const value = data[name]
-      let currentErrors = {}
-
-      for (const errorType in currentConfig) {
-        const errorConfig = currentConfig[errorType]
-        const error = getError(errorType, value, errorConfig)
-        currentErrors = { ...currentErrors, ...error }
-      }
-
-      errors = { ...errors, ...currentErrors }
-    }
-
-    return errors
+    return isValid
   }
   const handleChange = ([name, value]) => {
     setData((previousState) => ({ ...previousState, [name]: value }))
   }
   const handleSubmit = (event) => {
     event.preventDefault()
-    const errors = validate(data)
-    console.log(errors)
+    const isValid = validate(data)
+
+    if (isValid) {
+      console.log(data)
+    }
   }
 
   return (
