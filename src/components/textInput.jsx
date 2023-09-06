@@ -1,9 +1,10 @@
+import PropTypes from 'prop-types'
+
 const TextInput = (props) => {
   const { type, label, name, value, isTextarea, onChange, ...rest } = props
   const handleChange = (event) => {
     const { target } = event
     const { name, value } = target
-    console.log(target)
     onChange([name, value])
   }
   const renderInput = () => {
@@ -36,6 +37,15 @@ const TextInput = (props) => {
 
 TextInput.defaultProps = {
   type: 'text',
+}
+
+TextInput.propTypes = {
+  type: PropTypes.string,
+  label: PropTypes.string,
+  name: PropTypes.string,
+  value: PropTypes.string,
+  isTextarea: PropTypes.bool,
+  onChange: PropTypes.func,
 }
 
 export default TextInput
