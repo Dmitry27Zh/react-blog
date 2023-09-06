@@ -8,9 +8,9 @@ const Edit = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
   const [data, setData] = useState({ name: initialName, short: initialShort, long: initialLong })
   const [errors, setErrors] = useState({})
-  const hasChanges = () => Object.values(errors).some((value) => value !== '')
+  const [submitted, setSubmitted] = useState(false)
   useEffect(() => {
-    if (hasChanges()) {
+    if (submitted) {
       validate()
     }
   }, [data])
@@ -48,6 +48,10 @@ const Edit = (props) => {
     event.preventDefault()
     const isValid = validate()
 
+    if (!submitted) {
+      setSubmitted(true)
+    }
+
     if (isValid) {
       console.log(data)
     }
@@ -82,7 +86,7 @@ const Edit = (props) => {
           />
         </div>
       </div>
-      <button className="btn btn-outline-dark mt-4" type="submit" disabled={hasChanges() && !isValid(errors)}>
+      <button className="btn btn-outline-dark mt-4" type="submit" disabled={submitted && !isValid(errors)}>
         Submit
       </button>
     </form>
