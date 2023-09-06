@@ -1,27 +1,35 @@
 import PropTypes from 'prop-types'
 
 const TextInput = (props) => {
-  const { type, label, name, value, isTextarea, onChange, ...rest } = props
+  const { type, label, name, value, isTextarea, onChange, error, ...rest } = props
   const handleChange = (event) => {
     const { target } = event
     const { name, value } = target
     onChange([name, value])
   }
   const renderInput = () => {
+    let input
+    let classes = 'form-control'
+    classes += error ? ' is-invalid' : ''
+
     if (isTextarea) {
-      return <textarea className="form-control" name={name} id={name} value={value} onChange={handleChange} {...rest} />
+      input = <textarea className={classes} name={name} id={name} value={value} onChange={handleChange} {...rest} />
     } else {
-      return (
-        <input
-          className="form-control"
-          type={type}
-          name={name}
-          id={name}
-          value={value}
-          onChange={handleChange}
-          {...rest}
-        />
+      input = (
+        <input className={classes} type={type} name={name} id={name} value={value} onChange={handleChange} {...rest} />
       )
+    }
+
+    return (
+      <div className="input-group has-validation">
+        {input}
+        {renderError()}
+      </div>
+    )
+  }
+  const renderError = () => {
+    if (error) {
+      return <div className="invalid-feedback">{error}</div>
     }
   }
 

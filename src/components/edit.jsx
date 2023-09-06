@@ -6,6 +6,13 @@ const Edit = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
   const [data, setData] = useState({ name: initialName, short: initialShort, long: initialLong })
   const { name, short, long } = data
+  const validatorConfig = {
+    name: {
+      isRequired: {
+        message: `Name is required`,
+      },
+    },
+  }
   const handleChange = ([name, value]) => {
     setData((previousState) => ({ ...previousState, [name]: value }))
   }
@@ -17,7 +24,13 @@ const Edit = (props) => {
     <form onSubmit={handleSubmit}>
       <div className="row g-3">
         <div className="col-sm-6 me-5">
-          <TextInput label="Name" name="name" value={name} onChange={handleChange} />
+          <TextInput
+            label="Name"
+            name="name"
+            value={name}
+            onChange={handleChange}
+            error={validatorConfig.name.isRequired.message}
+          />
         </div>
         <div className="col-sm-6 me-5">
           <TextInput
