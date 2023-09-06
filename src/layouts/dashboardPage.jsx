@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 
 const DashboardPage = () => {
   const headerExtra = (
-    <Link className="btn btn-outline-dark" to="/add">
+    <Link className="btn btn-outline-dark" to="/dashboard/add">
       Add new article
     </Link>
   )
