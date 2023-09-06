@@ -11,7 +11,7 @@ const Dashboard = () => {
   }, [])
 
   if (!articles) {
-    return 'Loading!'
+    return 'Loading...'
   }
 
   return (
@@ -20,8 +20,8 @@ const Dashboard = () => {
         const { id } = article
 
         return (
-          <div className="col">
-            <ArticleControlCard key={id} {...article} />
+          <div className="col" key={id}>
+            <ArticleControlCard {...article} />
           </div>
         )
       })}
