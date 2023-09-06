@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import TextInput from './textInput'
 import PropTypes from 'prop-types'
 import { validator } from '../utils/validator'
@@ -7,7 +7,7 @@ import { isObjEmpty, getOneValue } from '../utils/object'
 const Edit = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
   const [data, setData] = useState({ name: initialName, short: initialShort, long: initialLong })
-  const setErrors = (newErrors) => (errors = newErrors)
+  const [errors, setErrors] = useState({})
   const { name, short, long } = data
   const validatorConfig = {
     name: {
@@ -15,27 +15,38 @@ const Edit = (props) => {
         message: `Name is required`,
       },
     },
+    short: {
+      isRequired: {
+        message: `Short text is required`,
+      },
+    },
+    long: {
+      isRequired: {
+        message: `Long text is required`,
+      },
+    },
   }
-  let errors = validator(validatorConfig, data)
-  const validate = (data) => {
+  const validate = () => {
     const errors = validator(validatorConfig, data)
     setErrors(errors)
     const isValid = isObjEmpty(errors)
 
     return isValid
   }
+
   const getOneErrorMessage = (name) => getOneValue(errors[name])
   const handleChange = ([name, value]) => {
     setData((previousState) => ({ ...previousState, [name]: value }))
   }
   const handleSubmit = (event) => {
     event.preventDefault()
-    const isValid = validate(data)
+    const isValid = validate()
 
     if (isValid) {
       console.log(data)
     }
   }
+
   return (
     <form onSubmit={handleSubmit}>
       <div className="row g-3">
@@ -50,6 +61,7 @@ const Edit = (props) => {
             isTextarea={true}
             style={{ height: '4rem' }}
             onChange={handleChange}
+            error={getOneErrorMessage('short')}
           />
         </div>
         <div className="col-12 me-5">
@@ -60,6 +72,7 @@ const Edit = (props) => {
             isTextarea={true}
             style={{ height: '10rem' }}
             onChange={handleChange}
+            error={getOneErrorMessage('long')}
           />
         </div>
       </div>
