@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 const Article = (props) => {
   const { long } = props
 
@@ -6,6 +8,10 @@ const Article = (props) => {
       <p>{long}</p>
     </div>
   )
+}
+
+Article.propTypes = {
+  long: PropTypes.string,
 }
 
 export default Article

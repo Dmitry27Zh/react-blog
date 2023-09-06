@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 const Card = (props) => {
   const { title, text, link } = props
   const { linkText, href } = link
@@ -13,6 +15,12 @@ const Card = (props) => {
       </div>
     </div>
   )
+}
+
+Card.propTypes = {
+  title: PropTypes.string,
+  text: PropTypes.string,
+  link: PropTypes.object,
 }
 
 export default Card

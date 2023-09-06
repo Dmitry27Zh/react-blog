@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import PropTypes from 'prop-types'
 
 const NavigationLink = (props) => {
   const { to, children } = props
@@ -14,6 +15,10 @@ const NavigationLink = (props) => {
       {children}
     </NavLink>
   )
+}
+
+NavigationLink.propTypes = {
+  to: PropTypes.string,
 }
 
 export default NavigationLink

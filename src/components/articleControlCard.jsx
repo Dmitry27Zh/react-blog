@@ -1,3 +1,5 @@
+import PropTypes from 'prop-types'
+
 const ArticleControlCard = (props) => {
   const { name } = props
 
@@ -11,6 +13,10 @@ const ArticleControlCard = (props) => {
       </div>
     </div>
   )
+}
+
+ArticleControlCard.propTypes = {
+  name: PropTypes.string,
 }
 
 export default ArticleControlCard
