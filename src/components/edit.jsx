@@ -13,11 +13,56 @@ const Edit = (props) => {
       },
     },
   }
+  const validate = (data) => {
+    let errors = {}
+    const getError = (type, value, config) => {
+      const error = {}
+      const { message } = config
+      let invalid = false
+
+      switch (type) {
+        case 'isRequired':
+          invalid = value.trim().length === 0
+
+          break
+        case 'isRequired2':
+          invalid = value.trim().length === 0
+
+          break
+        default:
+          break
+      }
+
+      if (invalid) {
+        error[type] = message
+      }
+
+      return error
+    }
+
+    for (const name in validatorConfig) {
+      const currentConfig = validatorConfig[name]
+      const value = data[name]
+      let currentErrors = {}
+
+      for (const errorType in currentConfig) {
+        const errorConfig = currentConfig[errorType]
+        const error = getError(errorType, value, errorConfig)
+        currentErrors = { ...currentErrors, ...error }
+      }
+
+      errors = { ...errors, ...currentErrors }
+    }
+
+    return errors
+  }
   const handleChange = ([name, value]) => {
     setData((previousState) => ({ ...previousState, [name]: value }))
   }
   const handleSubmit = (event) => {
     event.preventDefault()
+    const errors = validate(data)
+    console.log(errors)
   }
 
   return (
