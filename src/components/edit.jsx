@@ -2,11 +2,12 @@ import { useState } from 'react'
 import TextInput from './textInput'
 import PropTypes from 'prop-types'
 import { validator } from '../utils/validator'
-import { isObjEmpty } from '../utils/object'
+import { isObjEmpty, getOneValue } from '../utils/object'
 
 const Edit = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
   const [data, setData] = useState({ name: initialName, short: initialShort, long: initialLong })
+  const setErrors = (newErrors) => (errors = newErrors)
   const { name, short, long } = data
   const validatorConfig = {
     name: {
@@ -15,12 +16,15 @@ const Edit = (props) => {
       },
     },
   }
+  let errors = validator(validatorConfig, data)
   const validate = (data) => {
     const errors = validator(validatorConfig, data)
+    setErrors(errors)
     const isValid = isObjEmpty(errors)
 
     return isValid
   }
+  const getOneErrorMessage = (name) => getOneValue(errors[name])
   const handleChange = ([name, value]) => {
     setData((previousState) => ({ ...previousState, [name]: value }))
   }
@@ -32,18 +36,11 @@ const Edit = (props) => {
       console.log(data)
     }
   }
-
   return (
     <form onSubmit={handleSubmit}>
       <div className="row g-3">
         <div className="col-sm-6 me-5">
-          <TextInput
-            label="Name"
-            name="name"
-            value={name}
-            onChange={handleChange}
-            error={validatorConfig.name.isRequired.message}
-          />
+          <TextInput label="Name" name="name" value={name} onChange={handleChange} error={getOneErrorMessage('name')} />
         </div>
         <div className="col-sm-6 me-5">
           <TextInput

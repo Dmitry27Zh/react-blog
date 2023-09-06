@@ -2,4 +2,8 @@ const isObjEmpty = (obj) => {
   return Object.keys(obj).length === 0
 }
 
-export { isObjEmpty }
+const getOneValue = (obj = {}) => {
+  return Object.values(obj)[0]
+}
+
+export { isObjEmpty, getOneValue }

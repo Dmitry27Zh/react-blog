@@ -1,3 +1,5 @@
+import { isObjEmpty } from './object'
+
 export const validator = (validatorConfig, data) => {
   let errors = {}
   const getError = (type, value, config) => {
@@ -32,7 +34,9 @@ export const validator = (validatorConfig, data) => {
       currentErrors = { ...currentErrors, ...error }
     }
 
-    errors = { ...errors, ...currentErrors }
+    if (!isObjEmpty(currentErrors)) {
+      errors[name] = currentErrors
+    }
   }
 
   return errors
