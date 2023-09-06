@@ -1,10 +1,10 @@
-import Edit from '../components/edit'
+import Add from '../components/add'
 import Page from './page'
 
 const AddPage = () => {
   return (
     <Page title="Add new article">
-      <Edit />
+      <Add />
     </Page>
   )
 }
