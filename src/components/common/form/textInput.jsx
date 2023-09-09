@@ -1,7 +1,7 @@
 import PropTypes from 'prop-types'
 
 const TextInput = (props) => {
-  const { type, label, name, value, isTextarea, onChange, error, className, ...rest } = props
+  const { type, label, name, value, isTextarea, onChange, errorElement, className, ...rest } = props
 
   const renderInput = () => {
     let input
@@ -17,14 +17,9 @@ const TextInput = (props) => {
     return (
       <div className="input-group has-validation">
         {input}
-        {renderError()}
+        {errorElement}
       </div>
     )
-  }
-  const renderError = () => {
-    if (error) {
-      return <div className="invalid-feedback">{error}</div>
-    }
   }
 
   return (
@@ -49,7 +44,7 @@ TextInput.propTypes = {
   value: PropTypes.string,
   isTextarea: PropTypes.bool,
   onChange: PropTypes.func,
-  error: PropTypes.string,
+  errorElement: PropTypes.element,
   className: PropTypes.string,
 }
 

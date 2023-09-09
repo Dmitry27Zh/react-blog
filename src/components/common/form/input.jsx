@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types'
 import TextInput from './textInput'
+import InputError from './inputError'
 
 const Input = (props) => {
   const { onChange, Component, ...rest } = props
@@ -12,12 +13,14 @@ const Input = (props) => {
     const { name, value } = target
     onChange([name, value])
   }
+  const errorElement = <InputError error={error} />
 
-  return <Component onChange={handleChange} className={className} {...rest} />
+  return <Component onChange={handleChange} className={className} {...rest} errorElement={errorElement} />
 }
 
 Input.defaultProps = {
   Component: TextInput,
+  error: '',
 }
 
 Input.propTypes = {
