@@ -1,5 +1,5 @@
 import PageSpecial from './pageSpecial'
-import LoginForm from '../components/ui/loginForm'
+import LoginForm from '../components/ui/loginForm/loginForm'
 
 const LoginPage = () => {
   return (

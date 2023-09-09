@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import Navigation from './navigation'
 
 const Header = () => {
@@ -10,12 +11,12 @@ const Header = () => {
       </div>
       <Navigation />
       <div className="col-md-3 text-end">
-        <button type="button" className="btn btn-outline-primary me-2">
+        <Link className="btn btn-outline-primary me-2" to="login">
           Login
-        </button>
-        <button type="button" className="btn btn-primary">
+        </Link>
+        <Link className="btn btn-primary" to="register">
           Sign-up
-        </button>
+        </Link>
       </div>
     </header>
   )
