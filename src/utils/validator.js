@@ -4,12 +4,20 @@ export const validator = (validatorConfig, data) => {
   let errors = {}
   const getError = (type, value, config) => {
     const error = {}
-    const { message } = config
+    const { message, value: configValue } = config
     let invalid = false
 
     switch (type) {
       case 'isRequired':
-        invalid = value.trim().length === 0
+        invalid = value.length === 0
+
+        break
+      case 'minLength':
+        invalid = value.length < configValue
+
+        break
+      case 'maxLength':
+        invalid = value.length > configValue
 
         break
       default:

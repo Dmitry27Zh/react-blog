@@ -3,6 +3,7 @@ import TextInput from '../common/form/textInput'
 import PropTypes from 'prop-types'
 import { validator } from '../../utils/validator'
 import { isObjEmpty, getOneValue } from '../../utils/object'
+import { InputLength } from '../../constants'
 
 const EditForm = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
@@ -20,15 +21,39 @@ const EditForm = (props) => {
       isRequired: {
         message: `Name is required`,
       },
+      minLength: {
+        message: `Name should contain minimum ${InputLength.ARTICLE.NAME.MIN} symbols`,
+        value: InputLength.ARTICLE.NAME.MIN,
+      },
+      maxLength: {
+        message: `Name should contain maximum ${InputLength.ARTICLE.NAME.MAX} symbols`,
+        value: InputLength.ARTICLE.NAME.MAX,
+      },
     },
     short: {
       isRequired: {
         message: `Short text is required`,
       },
+      minLength: {
+        message: `Short text should contain minimum ${InputLength.ARTICLE.SHORT.MIN} symbols`,
+        value: InputLength.ARTICLE.SHORT.MIN,
+      },
+      maxLength: {
+        message: `Short text should contain maximum ${InputLength.ARTICLE.SHORT.MAX} symbols`,
+        value: InputLength.ARTICLE.SHORT.MAX,
+      },
     },
     long: {
       isRequired: {
         message: `Long text is required`,
+      },
+      minLength: {
+        message: `Long text should contain minimum ${InputLength.ARTICLE.LONG.MIN} symbols`,
+        value: InputLength.ARTICLE.LONG.MIN,
+      },
+      maxLength: {
+        message: `Long text should contain maximum ${InputLength.ARTICLE.LONG.MAX} symbols`,
+        value: InputLength.ARTICLE.LONG.MAX,
       },
     },
   }
