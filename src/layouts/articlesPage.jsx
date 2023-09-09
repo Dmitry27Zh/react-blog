@@ -1,6 +1,6 @@
 import { useParams } from 'react-router-dom'
 import Page from './page'
-import ArticlesList from '../components/articlesList'
+import ArticlesList from '../components/page/articlesList/articlesList'
 import ArticlePage from './articlePage'
 
 const ArticlesPage = () => {

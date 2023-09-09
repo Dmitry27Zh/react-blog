@@ -1,5 +1,5 @@
 import Page from './page'
-import Dashboard from '../components/dashboard'
+import Dashboard from '../components/page/dashboard'
 import { Link } from 'react-router-dom'
 
 const DashboardPage = () => {

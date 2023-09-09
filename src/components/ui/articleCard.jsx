@@ -1,4 +1,4 @@
-import Card from './card'
+import Card from '../common/card'
 import PropTypes from 'prop-types'
 
 const ArticleCard = (props) => {

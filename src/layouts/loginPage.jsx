@@ -1,10 +1,10 @@
 import PageSpecial from './pageSpecial'
-import Login from '../components/login'
+import LoginForm from '../components/ui/loginForm'
 
 const LoginPage = () => {
   return (
     <PageSpecial title="Login">
-      <Login />
+      <LoginForm />
     </PageSpecial>
   )
 }

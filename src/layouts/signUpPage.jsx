@@ -1,10 +1,10 @@
 import PageSpecial from './pageSpecial'
-import SignUp from '../components/signUp'
+import SignUpForm from '../components/ui/signUpForm'
 
 const SignUpPage = () => {
   return (
     <PageSpecial title="Sign up">
-      <SignUp />
+      <SignUpForm />
     </PageSpecial>
   )
 }

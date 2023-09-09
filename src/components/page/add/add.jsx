@@ -1,4 +1,4 @@
-import Edit from './edit'
+import EditForm from '../../ui/editForm'
 
 const Add = () => {
   const data = {
@@ -7,7 +7,7 @@ const Add = () => {
     long: '',
   }
 
-  return <Edit {...data} />
+  return <EditForm {...data} />
 }
 
 export default Add

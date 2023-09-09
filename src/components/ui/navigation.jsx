@@ -1,4 +1,4 @@
-import NavigationLink from './navigationLink'
+import NavigationLink from '../common/navigationLink'
 
 const Navigation = () => {
   return (

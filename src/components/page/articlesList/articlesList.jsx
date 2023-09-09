@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
-import API from '../api'
-import ArticleControlCard from './articleControlCard'
+import ArticleCard from '../../ui/articleCard'
+import API from '../../../api'
 
-const Dashboard = () => {
+const ArticlesList = () => {
   const [articles, setArticles] = useState()
   useEffect(() => {
     API.articles.fetchAll().then((data) => {
@@ -21,7 +21,7 @@ const Dashboard = () => {
 
         return (
           <div className="col" key={id}>
-            <ArticleControlCard {...article} />
+            <ArticleCard {...article} />
           </div>
         )
       })}
@@ -29,4 +29,4 @@ const Dashboard = () => {
   )
 }
 
-export default Dashboard
+export default ArticlesList

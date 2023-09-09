@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react'
-import TextInput from './textInput'
+import TextInput from '../common/form/textInput'
 import PropTypes from 'prop-types'
-import { validator } from '../utils/validator'
-import { isObjEmpty, getOneValue } from '../utils/object'
+import { validator } from '../../utils/validator'
+import { isObjEmpty, getOneValue } from '../../utils/object'
 
-const Edit = (props) => {
+const EditForm = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
   const [data, setData] = useState({ name: initialName, short: initialShort, long: initialLong })
   const [errors, setErrors] = useState({})
@@ -93,10 +93,10 @@ const Edit = (props) => {
   )
 }
 
-Edit.propTypes = {
+EditForm.propTypes = {
   name: PropTypes.string,
   short: PropTypes.string,
   long: PropTypes.string,
 }
 
-export default Edit
+export default EditForm

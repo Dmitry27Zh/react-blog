@@ -1,4 +1,4 @@
-import Add from '../components/add'
+import Add from '../components/page/add'
 import Page from './page'
 
 const AddPage = () => {

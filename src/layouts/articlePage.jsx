@@ -1,4 +1,4 @@
-import Article from '../components/article'
+import Article from '../components/common/article'
 import Page from './page'
 import { useEffect, useState } from 'react'
 import API from '../api'

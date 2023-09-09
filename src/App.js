@@ -1,6 +1,6 @@
 import './App.css'
 import { Navigate, Route, Routes } from 'react-router-dom'
-import Header from './components/header'
+import Header from './components/ui/header'
 import ArticlesPage from './layouts/articlesPage'
 import DashboardPage from './layouts/dashboardPage'
 import AddPage from './layouts/addPage'
