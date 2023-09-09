@@ -1,22 +1,16 @@
 import PropTypes from 'prop-types'
 
 const TextInput = (props) => {
-  const { type, label, name, value, isTextarea, onChange, error, ...rest } = props
-  const handleChange = (event) => {
-    const { target } = event
-    const { name, value } = target
-    onChange([name, value])
-  }
+  const { type, label, name, value, isTextarea, onChange, error, className, ...rest } = props
+
   const renderInput = () => {
     let input
-    let classes = 'form-control'
-    classes += error ? ' is-invalid' : ''
 
     if (isTextarea) {
-      input = <textarea className={classes} name={name} id={name} value={value} onChange={handleChange} {...rest} />
+      input = <textarea className={className} name={name} id={name} value={value} onChange={onChange} {...rest} />
     } else {
       input = (
-        <input className={classes} type={type} name={name} id={name} value={value} onChange={handleChange} {...rest} />
+        <input className={className} type={type} name={name} id={name} value={value} onChange={onChange} {...rest} />
       )
     }
 
@@ -45,6 +39,7 @@ const TextInput = (props) => {
 
 TextInput.defaultProps = {
   type: 'text',
+  isTextarea: false,
 }
 
 TextInput.propTypes = {
@@ -54,6 +49,8 @@ TextInput.propTypes = {
   value: PropTypes.string,
   isTextarea: PropTypes.bool,
   onChange: PropTypes.func,
+  error: PropTypes.string,
+  className: PropTypes.string,
 }
 
 export default TextInput

@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react'
-import TextInput from '../common/form/textInput'
 import PropTypes from 'prop-types'
 import { validator } from '../../utils/validator'
 import { isObjEmpty, getOneValue } from '../../utils/object'
 import { InputLength } from '../../constants'
+import Input from '../common/form/input'
 
 const EditForm = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
@@ -86,10 +86,10 @@ const EditForm = (props) => {
     <form onSubmit={handleSubmit}>
       <div className="row g-3">
         <div className="col-sm-6 me-5">
-          <TextInput label="Name" name="name" value={name} onChange={handleChange} error={getOneErrorMessage('name')} />
+          <Input label="Name" name="name" value={name} onChange={handleChange} error={getOneErrorMessage('name')} />
         </div>
         <div className="col-sm-6 me-5">
-          <TextInput
+          <Input
             label="Short text"
             name="short"
             value={short}
@@ -100,7 +100,7 @@ const EditForm = (props) => {
           />
         </div>
         <div className="col-12 me-5">
-          <TextInput
+          <Input
             label="Long text"
             name="long"
             value={long}
