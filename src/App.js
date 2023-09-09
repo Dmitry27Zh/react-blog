@@ -13,7 +13,6 @@ function App() {
       <div className="container">
         <Header />
         <Routes>
-          <Route path="/" element={<Navigate to="/articles" />} />
           <Route path="/articles/:id?" element={<ArticlesPage />} />
           <Route path="/dashboard">
             <Route index element={<DashboardPage />}></Route>
@@ -21,6 +20,7 @@ function App() {
           </Route>
           <Route path="/login" element={<LoginPage />} />
           <Route path="/signup" element={<SignUpPage />} />
+          <Route path="*" element={<Navigate to="/articles" />} />
         </Routes>
       </div>
     </div>
