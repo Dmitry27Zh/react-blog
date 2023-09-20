@@ -1,23 +1,21 @@
 import PropTypes from 'prop-types'
 
 const TextInput = (props) => {
-  const { type, label, name, value, isTextarea, onChange, errorElement, className, ...rest } = props
+  const { type, label, name, value, isTextarea, className, children, ...rest } = props
 
   const renderInput = () => {
     let input
 
     if (isTextarea) {
-      input = <textarea className={className} name={name} id={name} value={value} onChange={onChange} {...rest} />
+      input = <textarea className={className} name={name} id={name} value={value} {...rest} />
     } else {
-      input = (
-        <input className={className} type={type} name={name} id={name} value={value} onChange={onChange} {...rest} />
-      )
+      input = <input className={className} type={type} name={name} id={name} value={value} {...rest} />
     }
 
     return (
       <div className="input-group has-validation">
         {input}
-        {errorElement}
+        {children}
       </div>
     )
   }
@@ -43,8 +41,6 @@ TextInput.propTypes = {
   name: PropTypes.string,
   value: PropTypes.string,
   isTextarea: PropTypes.bool,
-  onChange: PropTypes.func,
-  errorElement: PropTypes.element,
   className: PropTypes.string,
 }
 

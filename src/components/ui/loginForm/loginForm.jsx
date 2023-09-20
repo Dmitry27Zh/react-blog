@@ -1,7 +1,9 @@
 import { useState } from 'react'
 import './loginForm.css'
 import FloatingTextInput from '../../common/form/floatingTextInput/floatingTextInput'
-import Input from '../../common/form/input'
+import withAll from '../../common/form/input/withAll'
+
+const Input = withAll(FloatingTextInput)
 
 const LoginForm = () => {
   const [data, setData] = useState({
@@ -28,7 +30,6 @@ const LoginForm = () => {
           name="email"
           value={data.email}
           placeholder="Email address"
-          Component={FloatingTextInput}
           onChange={handleChange}
         />
         <Input
@@ -37,7 +38,6 @@ const LoginForm = () => {
           name="password"
           value={data.password}
           placeholder="Password"
-          Component={FloatingTextInput}
           onChange={handleChange}
         />
 

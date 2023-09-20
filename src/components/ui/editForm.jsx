@@ -3,19 +3,17 @@ import PropTypes from 'prop-types'
 import { validator } from '../../utils/validator'
 import { isObjEmpty, getOneValue } from '../../utils/object'
 import { InputLength } from '../../constants'
-import Input from '../common/form/input'
+import withAll from '../common/form/input/withAll'
+import TextInput from '../common/form/input/textInput'
+
+const Input = withAll(TextInput)
 
 const EditForm = (props) => {
   const { name: initialName, short: initialShort, long: initialLong } = props
   const [data, setData] = useState({ name: initialName, short: initialShort, long: initialLong })
+  const { name, short, long } = data
   const [errors, setErrors] = useState({})
   const [submitted, setSubmitted] = useState(false)
-  useEffect(() => {
-    if (submitted) {
-      validate()
-    }
-  }, [data])
-  const { name, short, long } = data
   const validatorConfig = {
     name: {
       isRequired: {
@@ -57,16 +55,22 @@ const EditForm = (props) => {
       },
     },
   }
-  const isValid = (errors) => isObjEmpty(errors)
   const validate = () => {
     const errors = validator(validatorConfig, data)
     setErrors(errors)
 
     return isValid(errors)
   }
+  useEffect(() => {
+    if (submitted) {
+      validate()
+    }
+  }, [data, submitted])
 
+  const isValid = (errors) => isObjEmpty(errors)
   const getOneErrorMessage = (name) => getOneValue(errors[name])
-  const handleChange = ([name, value]) => {
+  const handleChange = (change) => {
+    const [name, value] = change
     setData((previousState) => ({ ...previousState, [name]: value }))
   }
   const handleSubmit = (event) => {
